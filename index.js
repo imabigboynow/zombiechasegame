@@ -74,7 +74,7 @@ function mouseClicked() {
   if (!scarecrow) {
     scarecrow = new Character(player.x, player.y, "white", 10, 0);
     scarecrow.ttl = frameRate() * 5;
+    clickNoise.currentTime = 0;
+    clickNoise.play();
   }
-  clickNoise.currentTime = 0;
-  clickNoise.play();
 }
