@@ -21,6 +21,11 @@ const enemies = [
 ];
 let scarecrow;
 
+//source:https://www.youtube.com/watch?v=IXTJlH7g0tw
+let clickNoise= new Audio(
+  "https://raw.githubusercontent.com/imabigboynow/zombiechasegame/master/tacticalnuke.wav"
+);
+
 function setup()  {
   createCanvas(400, 400);
   noStroke();
@@ -70,4 +75,6 @@ function mouseClicked() {
     scarecrow = new Character(player.x, player.y, "white", 10, 0);
     scarecrow.ttl = frameRate() * 5;
   }
+  clickNoise.currentTime = 0;
+  clickNoise.play();
 }
