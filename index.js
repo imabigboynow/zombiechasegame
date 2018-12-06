@@ -97,7 +97,7 @@ function updateScene() {
 }
 
 function clearBackground() {
-  ctx.fillStyle = "black";
+  ctx.fillStyle = "green";
   ctx.fillRect(0, 0, canvas.width, canvas.height);
 }
 
@@ -108,7 +108,7 @@ function drawScene() {
   updateScene();
   if (progressBar.value <= 0) {
     ctx.font = "25px Comic Sans MS";
-    ctx.fillText("Tango down click to play again", 10, canvas.height / 2);
+    ctx.fillText("Tango down click to play again", 90, canvas.height / 2);
   } else {
     requestAnimationFrame(drawScene);
   }
@@ -116,3 +116,4 @@ function drawScene() {
 
 canvas.addEventListener("click", startGame);
 requestAnimationFrame(drawScene);
+
