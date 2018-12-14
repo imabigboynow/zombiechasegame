@@ -2,8 +2,9 @@ const canvas = document.querySelector("canvas");
 const ctx = canvas.getContext("2d");
 const progressBar = document.querySelector("progress");
 
-let backgroundSound = new Audio("https://raw.githubusercontent.com/imabigboynow/zombiechasegame/master/Arcade%20Game%20Menu%20Music%20Loop%20Sound%20Effect%20(8-Bit%20Style).mp3");
-
+let backgroundSound = new Audio(
+  "https://raw.githubusercontent.com/imabigboynow/zombiechasegame/master/Arcade%20Game%20Menu%20Music%20Loop%20Sound%20Effect%20(8-Bit%20Style).mp3"
+);
 
 function startGame() {
   if (progressBar.value === 0) {
@@ -36,7 +37,8 @@ class Player extends Sprite {
   constructor(x, y, radius, color, speed) {
     super();
     this.image = new Image();
-    this.image.src = "https://vignette.wikia.nocookie.net/callofduty/images/f/f4/Soldier_sprite_DOA_BO.png/revision/latest?cb=20121107192309";
+    this.image.src =
+      "https://vignette.wikia.nocookie.net/callofduty/images/f/f4/Soldier_sprite_DOA_BO.png/revision/latest?cb=20121107192309";
     Object.assign(this, { x, y, radius, color, speed });
   }
   draw() {
@@ -56,7 +58,7 @@ class Enemy extends Sprite {
 let enemies = [
   new Enemy(80, 200, 20, "rgba(128, 128, 128, 1)", 0.07),
   new Enemy(200, 250, 17, "rgba(128, 128, 128, 1)", 0.03),
-  new Enemy(150, 180, 22, "rgba(128, 128, 128, 1)", 0.007),
+  new Enemy(150, 180, 22, "rgba(128, 128, 128, 1)", 0.007)
 ];
 
 let mouse = { x: 0, y: 0 };
@@ -66,7 +68,6 @@ function updateMouse(event) {
   mouse.x = event.clientX - left;
   mouse.y = event.clientY - top;
 }
-
 
 function moveToward(leader, follower, speed) {
   follower.x += (leader.x - follower.x) * speed;
@@ -91,8 +92,8 @@ function updateScene() {
   moveToward(mouse, player, player.speed);
   enemies.forEach(enemy => moveToward(player, enemy, enemy.speed));
   enemies.forEach((enemy, i) =>
-    pushOff(enemy, enemies[(i + 1) % enemies.length])
-  );
+                  pushOff(enemy, enemies[(i + 1) % enemies.length])
+                 );
   enemies.forEach(enemy => {
     if (haveCollided(enemy, player)) {
       progressBar.value -= 2;
@@ -120,4 +121,3 @@ function drawScene() {
 
 canvas.addEventListener("click", startGame);
 requestAnimationFrame(drawScene);
-
