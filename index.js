@@ -2,12 +2,16 @@ const canvas = document.querySelector("canvas");
 const ctx = canvas.getContext("2d");
 const progressBar = document.querySelector("progress");
 
+let backgroundSound = new Audio("https://raw.githubusercontent.com/imabigboynow/zombiechasegame/master/Arcade%20Game%20Menu%20Music%20Loop%20Sound%20Effect%20(8-Bit%20Style).mp3");
+
+
 function startGame() {
   if (progressBar.value === 0) {
     progressBar.value = 100;
     Object.assign(player, { x: canvas.width / 2, y: canvas.height / 2 });
     requestAnimationFrame(drawScene);
   }
+  backgroundSound.play();
 }
 
 function distanceBetween(sprite1, sprite2) {
@@ -50,9 +54,9 @@ class Enemy extends Sprite {
 }
 
 let enemies = [
-  new Enemy(80, 200, 20, "rgba(255, 0, 0, 0.8)", 0.07),
-  new Enemy(200, 250, 17, "rgba(255, 0, 0, 0.7)", 0.03),
-  new Enemy(150, 180, 22, "rgba(255, 0, 0, 0.5)", 0.007),
+  new Enemy(80, 200, 20, "rgba(128, 128, 128, 1)", 0.07),
+  new Enemy(200, 250, 17, "rgba(128, 128, 128, 1)", 0.03),
+  new Enemy(150, 180, 22, "rgba(128, 128, 128, 1)", 0.007),
 ];
 
 let mouse = { x: 0, y: 0 };
@@ -97,7 +101,7 @@ function updateScene() {
 }
 
 function clearBackground() {
-  ctx.fillStyle = "green";
+  ctx.fillStyle = "black";
   ctx.fillRect(0, 0, canvas.width, canvas.height);
 }
 
@@ -108,7 +112,7 @@ function drawScene() {
   updateScene();
   if (progressBar.value <= 0) {
     ctx.font = "25px Comic Sans MS";
-    ctx.fillText("Tango down click to play again", 90, canvas.height / 2);
+    ctx.fillText("Game Over Click to Retry", 250, canvas.height / 2);
   } else {
     requestAnimationFrame(drawScene);
   }
