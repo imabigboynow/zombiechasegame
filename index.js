@@ -113,6 +113,7 @@ function drawScene() {
   updateScene();
   if (progressBar.value <= 0) {
     ctx.font = "25px Comic Sans MS";
+    ctx.fillStyle = "red";
     ctx.fillText("Game Over Click to Retry", 250, canvas.height / 2);
   } else {
     requestAnimationFrame(drawScene);
